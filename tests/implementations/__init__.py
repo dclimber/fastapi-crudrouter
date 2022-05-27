@@ -23,11 +23,16 @@ from .sqlalchemy_ import (
     sqlalchemy_implementation_string_pk,
     DSN_LIST,
 )
+# TODO: Add beanie
+from .beanie_ import (
+    beanie_implementation,
+)
 
 implementations = [
     (memory_implementation, ""),
     (ormar_implementation, ""),
     (gino_implementation, ""),
+    (beanie_implementation, ""),
 ]
 
 implementations.extend([(sqlalchemy_implementation, dsn) for dsn in DSN_LIST])

@@ -10,6 +10,7 @@ def test_virtualenv(virtualenv):
     virtualenv.run(f"python {file}")
 
 
+# TODO: Add Beanie tests
 if __name__ == "__main__":
     from fastapi_crudrouter import (
         DatabasesCRUDRouter,
