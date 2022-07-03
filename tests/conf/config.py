@@ -16,11 +16,22 @@ class BaseConfig:
     MSSQL_PORT = ""
     SA_PASSWORD = ""
 
+    MONGO_INITDB_ROOT_USERNAME = ""
+    MONGO_INITDB_ROOT_PASSWORD = ""
+    MONGO_INITDB_DATABASE = ""
+    MONGO_HOST = ""
+    MONGO_PORT = ""
+
     def __init__(self):
         self._apply_dot_env()
         self._apply_env_vars()
         self.POSTGRES_URI = f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
         self.MSSQL_URI = f"mssql+pyodbc://sa:{self.SA_PASSWORD}@{self.POSTGRES_HOST}:{self.MSSQL_PORT}/test?driver=SQL+Server"
+        self.MONGO_URI = (
+            f"mongodb://{self.MONGO_INITDB_ROOT_USERNAME}"
+            f":{self.MONGO_INITDB_ROOT_PASSWORD}@{self.MONGO_HOST}"
+            f":{self.MONGO_PORT}/{self.MONGO_INITDB_DATABASE}"
+        )
 
     def _apply_dot_env(self):
         with open(ENV_FILE_PATH) as fp:

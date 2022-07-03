@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.7"
 
 services:
     db:
@@ -16,3 +16,14 @@ services:
     #     - dev.env
     #   ports:
     #     - 1433:1433
+    mongo:
+      image: 'mongo:latest'
+      env_file: 
+        - dev.env
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME
+        - MONGO_INITDB_ROOT_PASSWORD
+        - MONGO_INITDB_DATABASE
+        - MONGO_PORT
+      ports:
+        - ${MONGO_PORT}:${MONGO_PORT}
